@@ -6,8 +6,5 @@ class HomeController < ApplicationController
 
   end
 
-  def choose
-  end
 
-  
 end

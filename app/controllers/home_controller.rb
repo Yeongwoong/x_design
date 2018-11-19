@@ -3,9 +3,11 @@ class HomeController < ApplicationController
 
   end
   def link
-    
+
   end
 
   def choose
   end
+
+  
 end

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'question/question_type1'
   get 'question/question_type2'
   get 'question/question_type3'
-  get 'home/choose'
   get 'home/loading'
   get 'home/link'
   # get 'home/question_type1'

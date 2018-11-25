@@ -2,12 +2,12 @@ class CategoryController < ApplicationController
   def choose
     #code
     gender = params[:gender]
-    
-    if gender == "broker"
 
-    elsif gender == "female"
+    if gender == "female"
+      # 여자
 
     else
+      # 남자
 
     end
   end

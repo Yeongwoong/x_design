@@ -3,6 +3,8 @@
   <section class="wrapper style1 align-center">
     <div class="inner">
       <h2>상대방에게 궁금한 질문유형을 골라보세요!</h2>
+
+      
       <p style="font-weight: bold;">Small talk</p>
       <div class="items style1 medium onscroll-fade-in">
         <% 3.times do |i| %>
@@ -11,26 +13,10 @@
             <h3><%= Category.where(id: i+1).first.text %></h3>
           </section>
         <% end %>
-        <!-- <section>
-          <span class="icon style2 major fa-diamond"></span>
-          <h3>Lorem</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
-        </section>
-        <section>
-          <span class="icon style2 major fa-save"></span>
-          <h3>Ipsum</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
-        </section>
-        <section>
-          <span class="icon style2 major fa-bar-chart"></span>
-          <h3>Dolor</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
-        </section> -->
       </div>
 
       </br>
       <p style="font-weight: bold;">Personal Question</p>
-
       <div class="items style1 medium onscroll-fade-in">
         <% 3.times do |i| %>
           <section class="category_normal">
@@ -42,8 +28,6 @@
 
     </br>
     <p style="font-weight: bold;">Special Question</p>
-
-
       <div class="items style1 medium onscroll-fade-in">
         <% 3.times do |i| %>
           <section class="category_normal">

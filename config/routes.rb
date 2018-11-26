@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+
   root 'home#index'
   get 'home/index'
 
   get 'answer/output_m'
   get 'answer/output_w'
   get 'answer/output_r'
-  get 'question/loading'
+  # get 'question/loading'
   get 'question/question_type1'
   get 'question/question_type2'
   get 'question/question_type3'
@@ -18,6 +19,12 @@ Rails.application.routes.draw do
   # get 'home/output_w'
   # get 'home/output_r'
   get 'category/choose'
+
+  resources :user
+  # get 'user/create'
+  # get 'user/read'
+  # get 'user/update'
+  # get 'user/delete'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

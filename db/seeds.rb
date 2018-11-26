@@ -147,6 +147,17 @@ answer_datas = %(1/볼링장 데이트
 30/Yes
 30/No).split(/\n/)
 
+
+User.create!(
+  gender: 1
+)
+User.create!(
+  gender: 2
+)
+User.create!(
+  gender: 3
+)
+
 categories.each do |text|
   Category.create!(text: text.split('/')[1].strip)
 end

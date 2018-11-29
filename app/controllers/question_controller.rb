@@ -1,5 +1,7 @@
 class QuestionController < ApplicationController
-  def loading
+  # def loading
+  # end
+  def control
   end
 
   def question_type1

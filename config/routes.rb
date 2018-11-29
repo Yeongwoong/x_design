@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get 'answer/output_w'
   get 'answer/output_r'
   # get 'question/loading'
-  get 'question/question_type1'
-  get 'question/question_type2'
-  get 'question/question_type3'
+  get 'question/control'
+  # get 'question/question_type1'
+  # get 'question/question_type2'
+  # get 'question/question_type3'
   get 'home/loading'
   get 'home/link'
   # get 'home/question_type1'
@@ -18,9 +19,16 @@ Rails.application.routes.draw do
   # get 'home/output_m'
   # get 'home/output_w'
   # get 'home/output_r'
-  get 'category/choose'
+  # get 'category/choose'
 
-  resources :user
+  resources :user do
+    get :loading, on: :collection
+    get :edit_question_type1, on: :member, only: :edit
+    get :edit_question_type2, on: :member, only: :edit
+    get :edit_question_type3, on: :member, only: :edit
+    post :update_question_type, on: :member
+
+  end
   # get 'user/create'
   # get 'user/read'
   # get 'user/update'

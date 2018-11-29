@@ -149,13 +149,13 @@ answer_datas = %(1/볼링장 데이트
 
 
 User.create!(
-  gender: 1
+  gender: "center"
 )
 User.create!(
-  gender: 2
+  gender: "female"
 )
 User.create!(
-  gender: 3
+  gender: "male"
 )
 
 categories.each do |text|

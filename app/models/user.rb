@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  enum gender: {"center":1, "female":2, "male": 3}
+
   has_many :first_category, :class_name => "Category", :foreign_key => "category_0_id"
   has_many :second_category, :class_name => "Category", :foreign_key => "category_1_id"
   has_many :third_category, :class_name => "Category", :foreign_key => "category_2_id"

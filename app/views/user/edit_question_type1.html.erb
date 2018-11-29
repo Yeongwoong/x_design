@@ -17,22 +17,24 @@
                   <!-- <span class="icon style2 major fa-cog"></span>
                   <label for="name">Yes</label> -->
                   <% if @user.gender == "female" %>
-                  <%= f.radio_button :"answer_#{@female_question_index - 1}_id", "yes", checked: false %>
-                  <%= f.label :"answer_#{@female_question_index - 1}_id_yes" , "Yes" %>
+                  <% answer = @question.answer.order(:id).first %>
+                  <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: false %>
+                  <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" , answer.text %>
                   <% else %>
-                  <%= f.radio_button :"answer_#{@male_question_index - 1}_id", "yes", checked: false %>
-                  <%= f.label :"answer_#{@male_question_index - 1}_id_yes" , "Yes" %>
+                  <%= f.radio_button :"answer_#{@male_question_index}_id", answer.id, checked: false %>
+                  <%= f.label :"answer_#{@male_question_index}_id_#{answer.id}" , answer.text %>
                   <% end %>
                 </div>
                 <div class="field half">
                   <!-- <span class="icon style2 major fa-paper-plane"></span>
                   <label for="email">No</label> -->
                   <% if @user.gender == "female" %>
-                  <%= f.radio_button :"answer_#{@female_question_index - 1}_id", "no", checked: false %>
-                  <%= f.label :"answer_#{@female_question_index - 1}_id_no" , "No" %>
+                  <% answer = @question.answer.order(:id).second %>
+                  <%= f.radio_button :"answer_#{@female_question_index}_id",  answer.id, checked: false %>
+                  <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" ,  answer.text %>
                   <% else %>
-                  <%= f.radio_button :"answer_#{@male_question_index - 1}_id", "no", checked: false %>
-                  <%= f.label :"answer_#{@male_question_index - 1}_id_no" , "No" %>
+                  <%= f.radio_button :"answer_#{@male_question_index}_id",  answer.id, checked: false %>
+                  <%= f.label :"answer_#{@male_question_index}_id_#{answer.id}" , answer.text %>
                   <% end %>
                 </div>
 

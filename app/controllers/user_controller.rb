@@ -42,12 +42,12 @@ class UserController < ApplicationController
       # 여기 상대가 답변했는지 검사해야함
       if @user.gender == "female"
         partner = User.where(gender: "male").first
-        unless partner.answer_0_id.nil? || partner.answer_0_id == 0
+        unless partner.answer_9_id.nil? || partner.answer_9_id == 0
           redirect_to answer_output_w_path(id: params[:id])
         end
       elsif @user.gender == "male"
         partner = User.where(gender: "female").first
-        unless partner.answer_0_id.nil? || partner.answer_0_id == 0
+        unless partner.answer_9_id.nil? || partner.answer_9_id == 0
           redirect_to answer_output_m_path(id: params[:id])
         end
       else
@@ -71,9 +71,9 @@ class UserController < ApplicationController
             @@female_questions.push(Question.where(category_id: cat).sample(1).first
           )
           end
-          @@female_questions.each do |q|
-            puts(q.id)
-          end
+          # @@female_questions.each do |q|
+          #   puts(q.id)
+          # end
 
           # 다음 페이지 연결
           female_redirect_to_question
@@ -83,7 +83,18 @@ class UserController < ApplicationController
         unless partner.category_0_id.nil? || partner.category_0_id == 0
           # 여자 선택 완료
           # 선택한 문제 구성
+          @@male_questions.clear
+          reset_partner_answer(partner)
 
+          cats = [partner.category_0_id, partner.category_1_id, partner.category_2_id]
+          @@male_questions = Question.where.not(id: cats).sample(7)
+          cats.each do |cat|
+            @@male_questions.push(Question.where(category_id: cat).sample(1).first
+          )
+          end
+
+          # 다음 페이지 연결
+          male_redirect_to_question
         end
       else
         # 아니면 그냥 로딩 화면 띄움

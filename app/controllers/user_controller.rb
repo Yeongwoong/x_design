@@ -39,7 +39,20 @@ class UserController < ApplicationController
     if params[:finished]
       # 답변끝
       puts("+++++답변끝++++++")
-      
+      # 여기 상대가 답변했는지 검사해야함
+      if @user.gender == "female"
+        partner = User.where(gender: "male").first
+        unless partner.answer_0_id.nil? || partner.answer_0_id == 0
+          redirect_to answer_output_w_path(id: params[:id])
+        end
+      elsif @user.gender == "male"
+        partner = User.where(gender: "female").first
+        unless partner.answer_0_id.nil? || partner.answer_0_id == 0
+          redirect_to answer_output_m_path(id: params[:id])
+        end
+      else
+      end
+
     else
       # 카테고리 끝
       # 여기서 상대편 선택여부 측정
@@ -50,6 +63,7 @@ class UserController < ApplicationController
           # 남자 선택 완료
           # 선택한 문제 구성
           @@female_questions.clear
+          reset_partner_answer(partner)
 
           cats = [partner.category_0_id, partner.category_1_id, partner.category_2_id]
           @@female_questions = Question.where.not(id: cats).sample(7)
@@ -89,6 +103,19 @@ class UserController < ApplicationController
 
 
   private
+  def reset_partner_answer(partner)
+    partner.answer_0_id = nil
+    partner.answer_1_id = nil
+    partner.answer_2_id = nil
+    partner.answer_3_id = nil
+    partner.answer_4_id = nil
+    partner.answer_5_id = nil
+    partner.answer_6_id = nil
+    partner.answer_7_id = nil
+    partner.answer_8_id = nil
+    partner.answer_9_id = nil
+  end
+
   def redirect_question
     if @user.gender == "female"
       @@female_questions.shift

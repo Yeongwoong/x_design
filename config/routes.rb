@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'answer/output_w'
   get 'answer/output_r'
   # get 'question/loading'
-  get 'question/control'
+  # get 'question/control'
   # get 'question/question_type1'
   # get 'question/question_type2'
   # get 'question/question_type3'

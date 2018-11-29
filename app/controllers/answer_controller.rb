@@ -1,8 +1,8 @@
 class AnswerController < ApplicationController
-  def output_m
+  def output_w
   end
 
-  def output_w
+  def output_m
   end
 
   def output_r

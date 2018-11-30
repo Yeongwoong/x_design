@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :load_object, only: [:show, :edit, :destroy, :update, :edit_question_type1, :edit_question_type2, :edit_question_type3]
+  before_action :load_object, only: [:show, :edit, :destroy, :update, :loading, :edit_question_type1, :edit_question_type2, :edit_question_type3]
   before_action :load_question, only: [:edit_question_type1, :edit_question_type2, :edit_question_type3]
   @@female_questions = []
   @@male_questions = []
@@ -56,7 +56,6 @@ class UserController < ApplicationController
     else
       # 카테고리 끝
       # 여기서 상대편 선택여부 측정
-      @user = User.find(params[:id])
       if @user.gender == "female"
         partner = User.where(gender: "male").first
         unless partner.category_0_id.nil? || partner.category_0_id == 0
@@ -71,15 +70,15 @@ class UserController < ApplicationController
             @@female_questions.push(Question.where(category_id: cat).sample(1).first
           )
           end
-          # @@female_questions.each do |q|
-          #   puts(q.id)
-          # end
+          @@female_questions.each do |q|
+            puts(q.id)
+          end
 
           # 다음 페이지 연결
           female_redirect_to_question
         end
       elsif @user.gender == "male"
-        partner = User.where(gender: "female").first.category_0_id
+        partner = User.where(gender: "female").first
         unless partner.category_0_id.nil? || partner.category_0_id == 0
           # 여자 선택 완료
           # 선택한 문제 구성
@@ -115,16 +114,16 @@ class UserController < ApplicationController
 
   private
   def reset_partner_answer(partner)
-    partner.answer_0_id = nil
-    partner.answer_1_id = nil
-    partner.answer_2_id = nil
-    partner.answer_3_id = nil
-    partner.answer_4_id = nil
-    partner.answer_5_id = nil
-    partner.answer_6_id = nil
-    partner.answer_7_id = nil
-    partner.answer_8_id = nil
-    partner.answer_9_id = nil
+    partner.update(answer_0_id: nil)
+    partner.update(answer_1_id: nil)
+    partner.update(answer_2_id: nil)
+    partner.update(answer_3_id: nil)
+    partner.update(answer_4_id: nil)
+    partner.update(answer_5_id: nil)
+    partner.update(answer_6_id: nil)
+    partner.update(answer_7_id: nil)
+    partner.update(answer_8_id: nil)
+    partner.update(answer_9_id: nil)
   end
 
   def redirect_question

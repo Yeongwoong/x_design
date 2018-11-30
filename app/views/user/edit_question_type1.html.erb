@@ -16,8 +16,8 @@
                 <div class="field half">
                   <!-- <span class="icon style2 major fa-cog"></span>
                   <label for="name">Yes</label> -->
-                  <% if @user.gender == "female" %>
                   <% answer = @question.answer.order(:id).first %>
+                  <% if @user.gender == "female" %>
                   <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: false %>
                   <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" , answer.text %>
                   <% else %>
@@ -28,8 +28,8 @@
                 <div class="field half">
                   <!-- <span class="icon style2 major fa-paper-plane"></span>
                   <label for="email">No</label> -->
-                  <% if @user.gender == "female" %>
                   <% answer = @question.answer.order(:id).second %>
+                  <% if @user.gender == "female" %>
                   <%= f.radio_button :"answer_#{@female_question_index}_id",  answer.id, checked: false %>
                   <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" ,  answer.text %>
                   <% else %>

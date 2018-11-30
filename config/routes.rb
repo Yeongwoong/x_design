@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
-  get 'home/index'
+  root 'home#link'
+  # get 'home/index'
+  # get 'home/link'
+
 
   get 'answer/output_m'
   get 'answer/output_w'
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
   # get 'question/question_type1'
   # get 'question/question_type2'
   # get 'question/question_type3'
-  get 'home/loading'
-  get 'home/link'
   # get 'home/question_type1'
   # get 'home/question_type2'
   # get 'home/question_type3'

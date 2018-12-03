@@ -17,10 +17,10 @@
                   <!-- <span class="icon style2 major fa-cog"></span>
                   <label for="name">Yes</label> -->
                   <% if @user.gender == "female" %>
-                  <%= f.radio_button :"answer_#{@female_question_index - 1}_id", "yes", checked: false %>
+                  <%= f.radio_button :"answer_#{@female_question_index - 1}_id", "yes", checked: true %>
                   <%= f.label :"answer_#{@female_question_index - 1}_id_yes" , "Yes" %>
                   <% else %>
-                  <%= f.radio_button :"answer_#{@male_question_index - 1}_id", "yes", checked: false %>
+                  <%= f.radio_button :"answer_#{@male_question_index - 1}_id", "yes", checked: true %>
                   <%= f.label :"answer_#{@male_question_index - 1}_id_yes" , "Yes" %>
                   <% end %>
                 </div>

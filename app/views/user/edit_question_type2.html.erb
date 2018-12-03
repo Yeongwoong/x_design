@@ -16,13 +16,13 @@
               <div class="fields">
 
                 <ul class="icons">
-                  <% @question.answer.order(:id).each do |answer| %>
+                  <% @question.answer.order(:id).each_with_index do |answer, i| %>
                   <li>
                     <% if @user.gender == "female" %>
-                      <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: false %>
+                      <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: i == 0 ? true : false %>
                       <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" , answer.text %>
                     <% else %>
-                      <%= f.radio_button :"answer_#{@male_question_index}_id", answer.id, checked: false %>
+                      <%= f.radio_button :"answer_#{@male_question_index}_id", answer.id, checked: i == 0 ? true : false %>
                       <%= f.label :"answer_#{@male_question_index}_id_#{answer.id}" , answer.text %>
                     <% end %>
                   </li>

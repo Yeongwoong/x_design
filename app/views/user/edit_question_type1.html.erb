@@ -18,10 +18,10 @@
                   <label for="name">Yes</label> -->
                   <% answer = @question.answer.order(:id).first %>
                   <% if @user.gender == "female" %>
-                  <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: false %>
+                  <%= f.radio_button :"answer_#{@female_question_index}_id", answer.id, checked: true %>
                   <%= f.label :"answer_#{@female_question_index}_id_#{answer.id}" , answer.text %>
                   <% else %>
-                  <%= f.radio_button :"answer_#{@male_question_index}_id", answer.id, checked: false %>
+                  <%= f.radio_button :"answer_#{@male_question_index}_id", answer.id, checked: true %>
                   <%= f.label :"answer_#{@male_question_index}_id_#{answer.id}" , answer.text %>
                   <% end %>
                 </div>

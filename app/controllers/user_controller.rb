@@ -42,12 +42,14 @@ class UserController < ApplicationController
       # 여기 상대가 답변했는지 검사해야함
       if @user.gender == "female"
         partner = User.where(gender: "male").first
-        unless partner.answer_9_id.nil? || partner.answer_9_id == 0
+        # unless partner.answer_9_id.nil? || partner.answer_9_id == 0
+        unless partner.answer_4_id.nil? || partner.answer_4_id == 0
           redirect_to answer_output_w_path(id: params[:id])
         end
       elsif @user.gender == "male"
         partner = User.where(gender: "female").first
-        unless partner.answer_9_id.nil? || partner.answer_9_id == 0
+        # unless partner.answer_9_id.nil? || partner.answer_9_id == 0
+        unless partner.answer_4_id.nil? || partner.answer_4_id == 0
           redirect_to answer_output_m_path(id: params[:id])
         end
       else
@@ -65,7 +67,8 @@ class UserController < ApplicationController
           reset_partner_answer(partner)
 
           cats = [partner.category_0_id, partner.category_1_id, partner.category_2_id]
-          @@female_questions = Question.where.not(id: cats).sample(7)
+          # @@female_questions = Question.where.not(id: cats).sample(7)
+          @@female_questions = Question.where.not(id: cats).sample(2)
           cats.each do |cat|
             @@female_questions.push(Question.where(category_id: cat).sample(1).first
           )
@@ -86,7 +89,8 @@ class UserController < ApplicationController
           reset_partner_answer(partner)
 
           cats = [partner.category_0_id, partner.category_1_id, partner.category_2_id]
-          @@male_questions = Question.where.not(id: cats).sample(7)
+          # @@male_questions = Question.where.not(id: cats).sample(7)
+          @@male_questions = Question.where.not(id: cats).sample(2)
           cats.each do |cat|
             @@male_questions.push(Question.where(category_id: cat).sample(1).first
           )
@@ -177,7 +181,9 @@ class UserController < ApplicationController
 
   def load_question
     @question = Question.find(params[:question_id])
-    @female_question_index = 10 - @@female_questions.count
-    @male_question_index = 10 - @@male_questions.count
+    @female_question_index = 5 - @@female_questions.count
+    @male_question_index = 5 - @@male_questions.count
+    # @female_question_index = 10 - @@female_questions.count
+    # @male_question_index = 10 - @@male_questions.count
   end
 end

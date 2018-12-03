@@ -41,10 +41,10 @@ class AnswerController < ApplicationController
     partner_answers << Answer.find(partner.answer_2_id)
     partner_answers << Answer.find(partner.answer_3_id)
     partner_answers << Answer.find(partner.answer_4_id)
-    partner_answers << Answer.find(partner.answer_5_id)
-    partner_answers << Answer.find(partner.answer_6_id)
-    partner_answers << Answer.find(partner.answer_7_id)
-    partner_answers << Answer.find(partner.answer_8_id)
-    partner_answers << Answer.find(partner.answer_9_id)
+    # partner_answers << Answer.find(partner.answer_5_id)
+    # partner_answers << Answer.find(partner.answer_6_id)
+    # partner_answers << Answer.find(partner.answer_7_id)
+    # partner_answers << Answer.find(partner.answer_8_id)
+    # partner_answers << Answer.find(partner.answer_9_id)
   end
 end
